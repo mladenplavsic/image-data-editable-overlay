@@ -47,7 +47,7 @@ Placement and output can be configured using config.json
                     "left": 120
                 },
                 {
-                    "value": "data.id_number",
+                    "value": "data.id_number | replace:'(\d{2})(\d{2})(\d{3}).*':$1.$2.1$3.",
                     "top": 404,
                     "left": 460
                 },
