@@ -1,4 +1,4 @@
-angular.module('app').controller('configController', function (config, $scope, $uibModalInstance, $cookies) {
+angular.module('app').controller('configController', function (config, $scope, $uibModalInstance) {
 
     $scope.config = config;
     $scope.submit = submit;

@@ -1,13 +1,12 @@
 angular.module('app', [
     'ngMessages'
     ,'ngResource'
-    ,'ngCookies'
     ,'ui.bootstrap'
 ]).filter('replace', function () {
     return function (string, regex, replacement) {
         return string.replace(new RegExp(regex), replacement);
     }
-}).controller('controller', function ($scope, $http, $parse, $cookies, $uibModal) {
+}).controller('controller', function ($scope, $http, $parse, $uibModal) {
 
     $scope.reset = reset;
     $scope.range = range;
@@ -54,16 +53,16 @@ angular.module('app', [
         });
 
         modalInstance.result.then(function (config) {
-            $cookies.put('config', JSON.stringify(config));
+            localStorage.setItem('config', JSON.stringify(config));
             reset();
         });
     }
 
     function reset(resetConfiguration) {
         if (resetConfiguration) {
-            $cookies.remove('config');
+            localStorage.removeItem('config');
         }
-        var config = $cookies.get('config');
+        var config = localStorage.getItem('config');
         if (config) {
             $scope.config = JSON.parse(config);
         } else {
