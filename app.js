@@ -30,15 +30,19 @@ angular.module('app', [
     }
 
     function submit() {
-        $http.post('data.php', {
-            data: $scope.data
-        }).success(function () {
-            window.print();
-        }).error(function () {
-            if (confirm('Data cannot be saved! Continue printing?')) {
-             window.print();
-            }
-        });
+        if (this.form.$valid) {
+            $http.post('data.php', {
+                data: $scope.data
+            }).success(function () {
+                window.print();
+            }).error(function () {
+                if (confirm('Data cannot be saved! Continue printing?')) {
+                    window.print();
+                }
+            });
+        } else {
+            alert('Invalid input')
+        }
     }
 
     function configure(config) {

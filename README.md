@@ -19,7 +19,10 @@ Placement and output can be configured using config.json
         },
         {
             "id": "id_number",
-            "default": "1234567890123"
+            "default": "1234567890123",
+            "restrictions": {
+                "pattern": "\\d{5}"
+            }
         },
         {
             "id": "city",

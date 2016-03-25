@@ -21,7 +21,12 @@
         <form novalidate name="form" ng-submit="submit()">
             <div ng-repeat="field in config.fields" class="form-group" ng-class="{'has-error':form[field.id].$invalid,'hidden':field.hidden}">
                 <label class="control-label" ng-bind="field.id"></label>
-                <input type="text" ng-attr-name="{{ field.id }}" ng-model="data[field.id]" class="form-control" ng-init="data[field.id]=field.default" required>
+                <input type="text" ng-attr-name="{{ field.id }}" ng-model="data[field.id]" class="form-control" ng-init="data[field.id]=field.default"
+                   ng-minlength="field.restrictions.minlength"
+                   ng-maxlength="field.restrictions.maxlength"
+                   ng-pattern="field.restrictions.pattern"
+                   required
+                >
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-lg">
