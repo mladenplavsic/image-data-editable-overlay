@@ -3,7 +3,11 @@ angular.module('app', [
     ,'ngResource'
     ,'ngCookies'
     ,'ui.bootstrap'
-]).controller('controller', function ($scope, $http, $parse, $cookies, $uibModal) {
+]).filter('replace', function () {
+    return function (string, regex, replacement) {
+        return string.replace(new RegExp(regex), replacement);
+    }
+}).controller('controller', function ($scope, $http, $parse, $cookies, $uibModal) {
 
     $scope.reset = reset;
     $scope.range = range;
