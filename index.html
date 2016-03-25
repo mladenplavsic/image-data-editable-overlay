@@ -18,7 +18,7 @@
 
 <body ng-controller="controller">
     <div class="container" ng-if="config">
-        <div class="row">
+        <div class="row" id="form">
             <div class="col-md-6">
                 <form novalidate name="form" ng-submit="submit()">
                     <div ng-repeat="field in config.fields" class="form-group" ng-class="{'has-error':form[field.id].$invalid,'hidden':field.hidden}">

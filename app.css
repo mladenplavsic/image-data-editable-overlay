@@ -16,8 +16,7 @@
     position: absolute;
     z-index: 1;
     font-weight: bold;
-    text-shadow: 0 0 3px rgba(255, 130, 0, .5);
-    box-shadow: 0 0 3px rgba(255, 130, 0, .5);
+    text-shadow: 0 0 8px magenta;
 }
 @page {
     size: A4;
@@ -29,7 +28,7 @@
         width: 210mm;
         height: 296mm;
     }
-    form {
+    #form {
         display: none;
     }
     .container,
