@@ -10,6 +10,7 @@ angular.module('app', [
     $scope.parse = parse;
     $scope.submit = submit;
     $scope.configure = configure;
+    $scope.reload = reload;
 
     $scope.data = {};
     reset();
@@ -60,7 +61,6 @@ angular.module('app', [
             $cookies.remove('config');
         }
         var config = $cookies.get('config');
-        console.log(config)
         if (config) {
             $scope.config = JSON.parse(config);
         } else {
@@ -71,6 +71,10 @@ angular.module('app', [
                 alert('Missing configuration! Copy config.json.dist to config.json and make your own configuration')
             });
         }
+    }
+
+    function reload() {
+        window.location.reload();
     }
 
 });
