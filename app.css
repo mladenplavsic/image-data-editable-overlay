@@ -1,0 +1,41 @@
+.sheet {
+    box-shadow: 0 0 3px magenta;
+    width: 210mm;
+    height: 296mm;
+    position: relative;
+    font-size: 12pt;
+    font-family: monospace;
+    page-break-before: always;
+}
+.sheet img {
+    position: absolute;
+    width: 210mm;
+    height: 296mm;
+}
+.sheet [ng-bind] {
+    position: absolute;
+    z-index: 1;
+    font-weight: bold;
+    text-shadow: 0 0 3px rgba(255, 130, 0, .5);
+    box-shadow: 0 0 3px rgba(255, 130, 0, .5);
+}
+@page {
+    size: A4;
+    margin: 0;
+}
+@media print {
+    html,
+    body {
+        width: 210mm;
+        height: 296mm;
+    }
+    form {
+        display: none;
+    }
+    .container,
+    .row,
+    [class*="col-"] {
+        margin: 0;
+        padding: 0;
+    }
+}
