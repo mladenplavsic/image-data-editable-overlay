@@ -32,6 +32,7 @@ Placement and output can be configured using config.json
     ],
     "sheets": [
         {
+            "name": "Sheet One",
             "image": "sheet_one.jpg",
             "copies": 2,
             "bindings": [
@@ -58,6 +59,7 @@ Placement and output can be configured using config.json
             ]
         },
         {
+            "name": "Sheet Two",
             "image": "sheet_two.jpg",
             "copies": 2,
             "bindings": [
