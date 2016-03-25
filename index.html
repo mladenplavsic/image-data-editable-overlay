@@ -10,8 +10,11 @@
     <script src="vendor/angular/angular.min.js"></script>
     <script src="vendor/angular/angular-messages.min.js"></script>
     <script src="vendor/angular/angular-resource.min.js"></script>
+    <script src="vendor/angular/angular-cookies.min.js"></script>
+    <script src="vendor/angular-ui/ui-bootstrap-custom-tpls-1.2.5.min.js"></script>
     <!-- App -->
     <script src="app.js"></script>
+    <script src="config.controller.js"></script>
 </head>
 
 <body ng-controller="controller">
@@ -27,13 +30,18 @@
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg">Print</button>
-                    <a ng-click="reset()" class="btn btn-default">Reset</a>
+                    <a ng-click="reset()" class="btn btn-link">Clean</a>
+                    <a ng-click="configure(config)" class="btn btn-default pull-right">
+                        <i class="glyphicon glyphicon-cog"></i>
+                        Config
+                    </a>
+                    <a ng-click="reset(true)" class="btn btn-link pull-right">Reset</a>
                 </div>
 
             </form>
 
             <div class="col-md-9" id="preview">
-                <div ng-repeat="sheet in config.sheets">
+                <div ng-repeat="sheet in config.sheets" ng-if="sheet.selected">
                     <div ng-repeat="copy in range(sheet.copies) track by $index" class="sheet">
                         <img ng-src="image/{{sheet.image}}">
                         <div ng-repeat="binding in sheet.bindings" ng-bind="parse(binding.value)" ng-style="{top:binding.top+'px',left:binding.left+'px'}"></div>

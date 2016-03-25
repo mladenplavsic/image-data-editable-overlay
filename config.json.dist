@@ -23,6 +23,7 @@
     ],
     "sheets": [
         {
+            "name": "Sheet One",
             "image": "sheet_one.jpg",
             "copies": 2,
             "bindings": [
@@ -49,6 +50,7 @@
             ]
         },
         {
+            "name": "Sheet Two",
             "image": "sheet_two.jpg",
             "copies": 2,
             "bindings": [
