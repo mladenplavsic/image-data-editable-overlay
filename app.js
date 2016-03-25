@@ -54,7 +54,6 @@ angular.module('app', [
         });
 
         modalInstance.result.then(function (config) {
-            console.log(config)
             $cookies.put('config', JSON.stringify(config));
             reset();
         });
