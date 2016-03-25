@@ -4,8 +4,18 @@ angular.module('app', [
     ,'ui.bootstrap'
 ]).filter('replace', function () {
     return function (string, regex, replacement) {
-        return string.replace(new RegExp(regex), replacement);
+        if (string && regex && replacement) {
+            return string.replace(new RegExp(regex), replacement);
+        }
     }
+}).filter('humanize', function () {
+    return function (text) {
+        if (text) {
+            var string = text.split('_').join(' ').toLowerCase();
+            string = string.charAt(0).toUpperCase() + string.slice(1);
+            return string;
+        }
+    };
 }).controller('controller', function ($scope, $http, $parse, $uibModal) {
 
     $scope.reset = reset;

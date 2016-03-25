@@ -11,11 +11,17 @@ Placement and output can be configured using config.json
     "fields": [
         {
             "id": "name",
-            "default": "John"
+            "default": "John",
+            "restrictions": {
+                "minlength": 2
+            }
         },
         {
             "id": "surname",
-            "default": "Smith"
+            "default": "Smith",
+            "restrictions": {
+                "minlength": 2
+            }
         },
         {
             "id": "id_number",

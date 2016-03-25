@@ -18,29 +18,41 @@
 
 <body ng-controller="controller">
     <div class="container" ng-if="config">
-        <form novalidate name="form" ng-submit="submit()">
-            <div ng-repeat="field in config.fields" class="form-group" ng-class="{'has-error':form[field.id].$invalid,'hidden':field.hidden}">
-                <label class="control-label" ng-bind="field.id"></label>
-                <input type="text" ng-attr-name="{{ field.id }}" ng-model="data[field.id]" class="form-control" ng-init="data[field.id]=field.default"
-                   ng-minlength="field.restrictions.minlength"
-                   ng-maxlength="field.restrictions.maxlength"
-                   ng-pattern="field.restrictions.pattern"
-                   required
-                >
+        <div class="row">
+            <div class="col-md-6">
+                <form novalidate name="form" ng-submit="submit()">
+                    <div ng-repeat="field in config.fields" class="form-group" ng-class="{'has-error':form[field.id].$invalid,'hidden':field.hidden}">
+                        <small ng-messages="form[field.id].$error" class="pull-right">
+                            <span ng-message="required">Required</span>
+                            <span ng-message="pattern">Pattern <strong ng-bind="field.restrictions.pattern"></strong></span>
+                            <span ng-message="minlength">Minlength <strong ng-bind="field.restrictions.minlength"></strong></span>
+                            <span ng-message="maxlength">Maxlength <strong ng-bind="field.restrictions.maxlength"></strong></span>
+                        </small>
+                        <label class="control-label">
+                            <span ng-bind="field.id | humanize"></span>
+                        </label>
+                        <input type="text" ng-attr-name="{{ field.id }}" ng-model="data[field.id]" class="form-control" ng-init="data[field.id]=field.default"
+                               ng-pattern="field.restrictions.pattern"
+                               ng-minlength="field.restrictions.minlength"
+                               ng-maxlength="field.restrictions.maxlength"
+                               required
+                                >
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="glyphicon glyphicon-print"></i>
+                            Print
+                        </button>
+                        <a ng-click="reload()" class="btn btn-link">Clean</a>
+                        <a ng-click="configure(config)" class="btn btn-default pull-right">
+                            <i class="glyphicon glyphicon-cog"></i>
+                            Config
+                        </a>
+                        <a ng-click="reset(true)" class="btn btn-link pull-right">Reset</a>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-lg">
-                    <i class="glyphicon glyphicon-print"></i>
-                    Print
-                </button>
-                <a ng-click="reload()" class="btn btn-link">Clean</a>
-                <a ng-click="configure(config)" class="btn btn-default pull-right">
-                    <i class="glyphicon glyphicon-cog"></i>
-                    Config
-                </a>
-                <a ng-click="reset(true)" class="btn btn-link pull-right">Reset</a>
-            </div>
-        </form>
+        </div>
         <div id="preview">
             <div ng-repeat="sheet in config.sheets" ng-if="sheet.selected">
                 <div ng-repeat="copy in range(sheet.copies) track by $index" class="sheet">
